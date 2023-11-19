@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import courTD.Entity.Chapter;
 import courTD.Entity.Subject;
+import courTD.Request.ChapterRequest;
+import courTD.Response.ChapterResponse;
 import courTD.Service.ChapterService;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Chapter")
+@RequestMapping("/Chapters")
 public class ChapterControlleur {
 	private final ChapterService chapterservice;
 
@@ -26,8 +29,7 @@ public class ChapterControlleur {
 	
 
     @PostMapping
-    public void save(
-            @RequestBody Chapter chapter
+    public void save (@RequestBody @Valid ChapterRequest chapter
     ) {
     	chapterservice.save(chapter);
     
@@ -36,7 +38,7 @@ public class ChapterControlleur {
 
 
     @GetMapping("/{chapter-id}")
-    public Chapter findById(
+    public ChapterResponse findById(
             @PathVariable("chapter-id") Integer chapterId
     ) {
         return chapterservice.findById(chapterId);
@@ -45,7 +47,7 @@ public class ChapterControlleur {
    
 
     @GetMapping
-    public List<Chapter> findAll() {
+    public List<ChapterResponse> findAll() {
     return chapterservice.findAll();
     }
  

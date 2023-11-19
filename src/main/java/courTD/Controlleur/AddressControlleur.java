@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import courTD.Entity.Address;
 import courTD.Entity.Student;
+import courTD.Request.AddressRequest;
+import courTD.Response.AddressResponse;
 import courTD.Service.AddressService;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Address")
+@RequestMapping("/Addresss")
 public class AddressControlleur {
 	
 	private final AddressService addresseService;
@@ -29,13 +32,13 @@ public class AddressControlleur {
 
 	@GetMapping
 
-	    public List<Address> findAll() {
+	    public List<AddressResponse> findAll() {
 	    return addresseService.findAll();
 	    }
 	
 	@PostMapping
     public void save(
-            @RequestBody Address address
+            @RequestBody @Valid AddressRequest address
     ) {
 		addresseService.save(address);;
     
@@ -44,7 +47,7 @@ public class AddressControlleur {
 
 
     @GetMapping("/{Adress-id}")
-    public Address findById(
+    public AddressResponse findById(
             @PathVariable("Adress-id") Integer AdressId
     ) {
         return addresseService.findById(AdressId);
@@ -58,7 +61,7 @@ public class AddressControlleur {
 
 
     @GetMapping("/search")
-    public Address findByHomeAddress(
+    public AddressResponse findByHomeAddress(
             @RequestParam String homeAddress
     ) {
         return addresseService.findByHomeAddress(homeAddress);

@@ -4,12 +4,14 @@ import java.util.List;
 
 import courTD.Entity.Address;
 import courTD.Entity.Chapter;
+import courTD.Request.AddressRequest;
+import courTD.Response.AddressResponse;
 
 public interface AddressService {
-	void save(Address a);
-	Address findById(Integer id);
-    List<Address> findAll();
+	void save(AddressRequest a);
+	AddressResponse findById(Integer id);
+    List<AddressResponse> findAll();
     void deleteById(Integer id);
-    Address findByHomeAddress(String homeAddress);
+    AddressResponse findByHomeAddress(String homeAddress);
     
 }

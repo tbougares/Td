@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import courTD.Entity.Student;
 import courTD.Entity.Subject;
+import courTD.Request.SubjectRequest;
+import courTD.Response.SubjectResponse;
 import courTD.Service.SubjectService;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Subject")
+@RequestMapping("/Subjects")
 public class SubjectControlleur {
 	
 	private final SubjectService subjectservice;
@@ -29,7 +32,7 @@ public class SubjectControlleur {
 
     @PostMapping
     public void save(
-            @RequestBody Subject subject
+            @RequestBody @Valid SubjectRequest subject
     ) {
     	subjectservice.save(subject);
     
@@ -38,7 +41,7 @@ public class SubjectControlleur {
 
 
     @GetMapping("/{subject-id}")
-    public Subject findById(
+    public SubjectResponse findById(
             @PathVariable("subject-id") Integer subjectId
     ) {
         return subjectservice.findById(subjectId);
@@ -47,7 +50,7 @@ public class SubjectControlleur {
    
 
     @GetMapping
-    public List<Subject> findAll() {
+    public List<SubjectResponse> findAll() {
     return subjectservice.findAll();
     }
  

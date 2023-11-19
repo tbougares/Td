@@ -1,10 +1,15 @@
 package courTD.Service.ServiceImp;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.apache.catalina.mapper.Mapper;
 import org.springframework.stereotype.Service;
 
 import courTD.Entity.Student;
+import courTD.Mapper.StudentMapper;
+import courTD.Request.StudentRequest;
+import courTD.Response.StudentResponse;
 import courTD.Service.StudentService;
 import courTD.repository.StudentRepository;
 
@@ -12,38 +17,47 @@ import courTD.repository.StudentRepository;
 public class StudentServiceImplements implements StudentService {
 
 	private final StudentRepository studentRepository;
-
+	private final StudentMapper mapper;
    
 
-    public StudentServiceImplements(StudentRepository studentRepository) {
+
+
+
+	public StudentServiceImplements(StudentRepository studentRepository, StudentMapper mapper) {
 		super();
 		this.studentRepository = studentRepository;
+		this.mapper = mapper;
 	}
+
 
 
 
 	@Override
-	public void save(Student s) {
+	public void save(StudentRequest s) {
 		// TODO Auto-generated method stub
-		this.studentRepository.save(s);
+		Student student = mapper.toStudent(s);
+		this.studentRepository.save(student);
 	}
+	
 
 
 
 	@Override
-	public Student findById(Integer id) {
-		// TODO Auto-generated method stub
-		return  this.studentRepository.findById(id)
-                .orElse(null);
-	}
+	public StudentResponse findById(Integer id) {
+        return this.studentRepository.findById(id)
+                .map(mapper::toStudentDto)
+                .orElse(new StudentResponse());
+    }
 
 
 
 	@Override
-	public List<Student> findAll() {
-		// TODO Auto-generated method stub
-		return this.studentRepository.findAll();
-	}
+	public List<StudentResponse> findAll() {
+        return this.studentRepository.findAll()
+                .stream()
+                .map(mapper::toStudentDto)
+                .collect(Collectors.toList());
+    }
 
 
 

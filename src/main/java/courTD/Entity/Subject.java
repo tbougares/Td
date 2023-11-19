@@ -22,7 +22,7 @@ public class Subject {
     private String name;
 
     @ManyToMany(mappedBy = "subjects")
-    @JsonBackReference
+    //@JsonBackReference
     private List<Student> students;
 
     @OneToMany(mappedBy = "subject")

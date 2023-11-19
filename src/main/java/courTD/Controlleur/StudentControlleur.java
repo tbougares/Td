@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import courTD.Entity.Student;
+import courTD.Request.StudentRequest;
+import courTD.Response.StudentResponse;
 import courTD.Service.StudentService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/Students")
@@ -28,9 +31,7 @@ public class StudentControlleur {
 
 
 		@PostMapping
-	    public void save(
-	            @RequestBody Student student
-	    ) {
+	    public void save(@RequestBody @Valid StudentRequest student) {
 	    studentservice.save(student);
 	    
 	    }
@@ -38,7 +39,7 @@ public class StudentControlleur {
 
 
 	    @GetMapping("/{student-id}")
-	    public Student findById(
+	    public StudentResponse findById(
 	            @PathVariable("student-id") Integer studentId
 	    ) {
 	        return studentservice.findById(studentId);
@@ -46,12 +47,12 @@ public class StudentControlleur {
 
 	   
 
-	    @GetMapping("")
-	    public List<Student> findAll() {
+	    @GetMapping
+	    public List<StudentResponse> findAll() {
 	    return studentservice.findAll();
 	    }
 	    @GetMapping("/search")
-	    public List<Student> findByFirstname(
+	    public List<StudentResponse> findByFirstname(
 	            @RequestParam(value = "fname") String firstname
 	    ) {
 	        return studentservice.findAll();
