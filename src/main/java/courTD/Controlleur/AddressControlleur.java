@@ -11,15 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import courTD.Entity.Address;
-import courTD.Entity.Student;
 import courTD.Request.AddressRequest;
 import courTD.Response.AddressResponse;
 import courTD.Service.AddressService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Addresss")
+@RequestMapping("/Addresses")
 public class AddressControlleur {
 	
 	private final AddressService addresseService;

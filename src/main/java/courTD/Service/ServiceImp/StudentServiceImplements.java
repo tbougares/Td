@@ -3,7 +3,6 @@ package courTD.Service.ServiceImp;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.stereotype.Service;
 
 import courTD.Entity.Student;
@@ -64,7 +63,17 @@ public class StudentServiceImplements implements StudentService {
 	@Override
 	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
-		studentRepository.deleteById(id);
+        if(id!=null) {
+			
+			System.out.println(" ID is null");
+			return ;
+		}
+        if(studentRepository.findById(id)!=null) {
+        	studentRepository.deleteById(id);
+        	
+        }
+        else
+            	return;
 	}
 
 }

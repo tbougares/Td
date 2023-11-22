@@ -14,9 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class SubjectResponse {
+	
+	
 	private String name;
-    private List<Student> students;
-
-    private List<Chapter> chapters;
 
 }

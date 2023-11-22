@@ -6,78 +6,60 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import courTD.Entity.Subject;
+import courTD.Mapper.SubjectMapper;
 import courTD.Request.SubjectRequest;
 import courTD.Response.SubjectResponse;
 import courTD.Service.SubjectService;
 import courTD.repository.SubjectReposotory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 
 @Service
+@RequiredArgsConstructor
 public class SubjectServiceImplements implements SubjectService {
 
 	
 	private final SubjectReposotory subjectRepository;
+	private final SubjectMapper mapper;
 	
-	public SubjectServiceImplements(SubjectReposotory subjectRepository) {
-		super();
-		this.subjectRepository = subjectRepository;
-	}
+	
 
-/*	@Override
-	public void save(Subject s) {
-		// TODO Auto-generated method stub
-		subjectRepository.save(s);
-		
-	}
 
-	@Override
-	public Subject findById(Integer id) {
-		// TODO Auto-generated method stub
-		return subjectRepository.findById(id).orElse(null);
-	}
-
-	/*	@Override
+ 	@Override
 	public List<SubjectResponse> findAll() {
 		// TODO Auto-generated method stub
-		return subjectRepository.findAll().stream()
-                .map(mapper::toStudentDto)
+		return subjectRepository.findAll()
+				.stream()
+                .map(mapper::toSubjecttDto)
                 .collect(Collectors.toList());
 	}
 	@Override
-    public void save(StudentRequest s) {
-        Student student = mapper.toStudent(s);
-        this.studentRepository.save(student);
+    public void save(SubjectRequest suubject) {
+        Subject subject = mapper.toSubject(suubject);
+        this.subjectRepository.save(subject);
     }
 
     @Override
-    public StudentResponse findById(Integer id) {
-        return this.studentRepository.findById(id)
-                .map(mapper::toStudentDto)
-                .orElse(new StudentResponse());
+    public SubjectResponse findById(Integer id) {
+        return this.subjectRepository.findById(id)
+                .map(mapper::toSubjecttDto)
+                .orElse(new SubjectResponse());
     }
-	*/
+	
 
 	@Override
 	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
-		subjectRepository.deleteById(id);
+		if(id!=null) {
+			
+			System.out.println(" ID is null");
+			return ;
+		}
+		if(subjectRepository.findById(id)!=null) {
+			subjectRepository.deleteById(id);}
+	        else
+	        	return;
 	}
 
-	@Override
-	public void save(SubjectRequest s) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public SubjectResponse findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<SubjectResponse> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

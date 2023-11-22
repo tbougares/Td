@@ -56,6 +56,7 @@ public class SubjectControlleur {
  
     @DeleteMapping
     public void deleteById(Integer id) {
+    	
     	subjectservice.deleteById(id);
     }
 }

@@ -16,5 +16,5 @@ public class ChapterResponse {
 
     private String name;
 
-    private Subject subject;
+    // i don t know private Subject subject;
 }

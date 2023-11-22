@@ -16,5 +16,5 @@ public class AddressResponse {
 
 	private String homeAddress;
 
-    private Student student;
+    private Integer student;
 }
