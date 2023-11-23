@@ -17,6 +17,7 @@ public class StudentMapper {
         .lastname(std.getLastname())
         .age(std.getAge())
         .nbrSubjects(std.getSubjects().size())
+       
         .build();
                
     }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import courTD.Entity.*;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -27,6 +28,7 @@ public class Student {
     private int age;
 
     @OneToOne(mappedBy = "student")
+    
     private Address address;
 
     @ManyToMany

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import courTD.Entity.Chapter;
-import courTD.Entity.Subject;
 import courTD.Request.ChapterRequest;
 import courTD.Response.ChapterResponse;
 import courTD.Service.ChapterService;

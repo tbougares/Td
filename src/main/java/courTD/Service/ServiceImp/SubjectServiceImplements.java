@@ -12,7 +12,6 @@ import courTD.Response.SubjectResponse;
 import courTD.Service.SubjectService;
 import courTD.repository.SubjectReposotory;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 
 @Service
 @RequiredArgsConstructor

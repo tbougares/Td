@@ -11,16 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import courTD.Entity.Student;
 import courTD.Request.StudentRequest;
 import courTD.Response.StudentResponse;
 import courTD.Service.StudentService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Students")
+@RequestMapping("/students")
 public class StudentControlleur {
-	 private final StudentService studentservice;
+	    private final StudentService studentservice;
 
 	  	
 	    public StudentControlleur(StudentService studentservice) {
@@ -47,7 +46,7 @@ public class StudentControlleur {
 
 	   
 
-	    @GetMapping
+	    @GetMapping("/listAll")
 	    public List<StudentResponse> findAll() {
 	    return studentservice.findAll();
 	    }

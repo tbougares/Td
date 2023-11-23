@@ -25,4 +25,8 @@ public class StudentRequest {
     @Positive
     @Min(value = 18, message = "Student must be at least 18 YO")
     private int age;
+    
+    private AddressRequest address;
+    
+    
 }
